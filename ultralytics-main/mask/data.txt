@@ -1,0 +1,5 @@
+head_area : 3404.5
+eye_area : 512.0
+heart_area : 259.0
+yolk_area : 1622.0
+length : 679.4234482783651

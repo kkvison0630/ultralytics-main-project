@@ -1,0 +1,7 @@
+path: C:\ultralytics-main\ultralytics\mydata  # dataset root dir
+train: train/images  # train images (relative to 'path') 128 images
+val: val/images  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+nc: 4  # 类别数量
+names: ['head', 'eye', 'yolk', 'heart']  # 类别名称，顺序必须与标签文件中的类别索引一致
