@@ -1,51 +1,30 @@
-# åŠ è½½æ‰€éœ€çš„RåŒ…
+# ¼ÓÔØËùĞèµÄR°ü
 install.packages("pheatmap")
 library(pheatmap) 
-# ç”¨äºç»˜åˆ¶çƒ­å›¾
-library(RColorBrewer)# é¢œè‰²åŒ…
+# ÓÃÓÚ»æÖÆÈÈÍ¼
+library(RColorBrewer)# ÑÕÉ«°ü
 library(extrafont)
 font_import()
-#è¯»å–ä½œå›¾æ•°æ®
-data = read.csv("E:/Fig6b-heart-z.csv", header = TRUE, row.names = 1,sep = ",")
-# ä»æ–‡ä»¶è¯»å–CSVæ•°æ®ï¼Œ"æ–‡ä»¶å.csv"ï¼š
-# header = TRUEï¼šè¡¨ç¤ºCSVæ–‡ä»¶çš„ç¬¬ä¸€è¡Œæ˜¯åˆ—å,row.names = 1:ç¬¬ä¸€åˆ—ä¸ºè¡Œåã€‚
+#¶ÁÈ¡×÷Í¼Êı¾İ
+"data = read.csv(""Fig6b-heart-z.csv"", header = TRUE, row.names = 1,sep = "","")"
+# ´ÓÎÄ¼ş¶ÁÈ¡CSVÊı¾İ£¬"ÎÄ¼şÃû.csv"£º
+"# header = TRUE£º±íÊ¾CSVÎÄ¼şµÄµÚÒ»ĞĞÊÇÁĞÃû,row.names = 1:µÚÒ»ÁĞÎªĞĞÃû¡£"
 
-# ç”Ÿæˆçƒ­å›¾
-heatmap_result = pheatmap(data,         
-                          breaks = seq(-3.5, 3.5, length.out = 101),# é¢œè‰²èŒƒå›´å’Œæ–­ç‚¹
+# Éú³ÉÈÈÍ¼
+"heatmap_result = pheatmap(data,         "
+"                          breaks = seq(-3.5, 3.5, length.out = 101),# ÑÕÉ«·¶Î§ºÍ¶Ïµã"
                            col = colorRampPalette(c(
-                            "#E6F3FF",  "#A8D8EA", "#8DCCE3", 
-                            "#7ACCCE", "#78D6B9", "#8AE0B9",
-                            "#FFFAE6","#FFD6B8",  "#FF9A76" ))(100),  #åŸºå› è¡¨è¾¾çš„æ¸å˜è‰²è®¾ç½®
-                            legend_breaks = c(-3.5, -1.7, 0, 1.7, 3.5),  # æ˜¾ç¤ºå“ªäº›åˆ»åº¦
-         # çƒ­å›¾çš„é¢œè‰²ï¼Œå¯è°ƒæ•´ä¸ºBluesã€Redsã€YlOrRdç­‰ 
-         cluster_rows = FALSE,# æ˜¯å¦å¯¹è¡Œï¼ˆæŒ‡æ ‡ï¼‰è¿›è¡Œèšç±»
-         cluster_cols = TRUE,# æ˜¯å¦å¯¹åˆ—ï¼ˆç‰©è´¨ï¼‰è¿›è¡Œèšç±»
-         clustering_distance_rows = "euclidean",  
-         # èšç±»è·ç¦»ï¼ˆè¡Œï¼‰æŒ‡å®šç”¨äºè¡Œçš„èšç±»è·ç¦»åº¦é‡æ–¹æ³•ï¼Œè¿™é‡Œä½¿ç”¨æ¬§å‡ é‡Œå¾—è·ç¦»ã€‚         
-         clustering_distance_cols = "euclidean",  # èšç±»è·ç¦»ï¼ˆåˆ—ï¼‰         
-         clustering_method = "complete",# èšç±»æ–¹æ³•         
-         display_numbers = FALSE, # æ˜¯å¦æ˜¾ç¤ºæ•°å­—
-         fontfamily = "Times New Roman", # æ˜¯å¦æ˜¾ç¤ºç›¸å…³ç³»æ•°å€¼
-         treeheight_col = 40) # æ ‘æé«˜åº¦
-
-
-# åˆå§‹åŒ–ä¸€ä¸ªåˆ—è¡¨æ¥å­˜å‚¨ç»“æœ
-distance_list <- list()
-
-# è®¡ç®—æ¯ä¸¤åˆ—ä¹‹é—´çš„æ¯ä¸€è¡Œå…ƒç´ çš„æ¬§æ°è·ç¦»
-for (i in 1:(ncol(data)-1)) {
-  for (j in (i+1):ncol(data)) {
-    # è®¡ç®—ç¬¬iåˆ—å’Œç¬¬jåˆ—ä¹‹é—´æ¯ä¸€è¡Œå…ƒç´ çš„æ¬§æ°è·ç¦»
-    distances <- sqrt((data[, i] - data[, j])^2)
-    # å­˜å‚¨ç»“æœ
-    distance_list[[paste0("Col", i, "_Col", j)]] <- distances
-  }
-}
-
-# æ‰“å°ç»“æœ
-for (name in names(distance_list)) {
-  cat(name, ":\n")
-  print(distance_list[[name]])
-  cat("\n")
-}
+"                            ""#E6F3FF"",  ""#A8D8EA"", ""#8DCCE3"", "
+"                            ""#7ACCCE"", ""#78D6B9"", ""#8AE0B9"","
+"                            ""#FFFAE6"",""#FFD6B8"",  ""#FF9A76"" ))(100),  #»ùÒò±í´ïµÄ½¥±äÉ«ÉèÖÃ"
+"                            legend_breaks = c(-3.5, -1.7, 0, 1.7, 3.5),  # ÏÔÊ¾ÄÄĞ©¿Ì¶È"
+         # ÈÈÍ¼µÄÑÕÉ«£¬¿Éµ÷ÕûÎªBlues¡¢Reds¡¢YlOrRdµÈ 
+"         cluster_rows = FALSE,# ÊÇ·ñ¶ÔĞĞ£¨Ö¸±ê£©½øĞĞ¾ÛÀà"
+"         cluster_cols = TRUE,# ÊÇ·ñ¶ÔÁĞ£¨ÎïÖÊ£©½øĞĞ¾ÛÀà"
+"         clustering_distance_rows = ""euclidean"",  "
+         # ¾ÛÀà¾àÀë£¨ĞĞ£©Ö¸¶¨ÓÃÓÚĞĞµÄ¾ÛÀà¾àÀë¶ÈÁ¿·½·¨£¬ÕâÀïÊ¹ÓÃÅ·¼¸ÀïµÃ¾àÀë¡£         
+"         clustering_distance_cols = ""euclidean"",  # ¾ÛÀà¾àÀë£¨ÁĞ£©         "
+"         clustering_method = ""complete"",# ¾ÛÀà·½·¨         "
+"         display_numbers = FALSE, # ÊÇ·ñÏÔÊ¾Êı×Ö"
+"         fontfamily = ""Times New Roman"", # ÊÇ·ñÏÔÊ¾Ïà¹ØÏµÊıÖµ"
+         treeheight_col = 40) # Ê÷Ö¦¸ß¶È

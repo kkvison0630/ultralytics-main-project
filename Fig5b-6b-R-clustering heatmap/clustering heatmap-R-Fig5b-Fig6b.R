@@ -6,7 +6,7 @@ library(RColorBrewer)# 颜色包
 library(extrafont)
 font_import()
 #读取作图数据
-data = read.csv("E:/Fig6b-heart-z.csv", header = TRUE, row.names = 1,sep = ",")
+data = read.csv("Fig6b-heart-z.csv", header = TRUE, row.names = 1,sep = ",")
 # 从文件读取CSV数据，"文件名.csv"：
 # header = TRUE：表示CSV文件的第一行是列名,row.names = 1:第一列为行名。
 
@@ -30,22 +30,3 @@ heatmap_result = pheatmap(data,
          treeheight_col = 40) # 树枝高度
 
 
-# 初始化一个列表来存储结果
-distance_list <- list()
-
-# 计算每两列之间的每一行元素的欧氏距离
-for (i in 1:(ncol(data)-1)) {
-  for (j in (i+1):ncol(data)) {
-    # 计算第i列和第j列之间每一行元素的欧氏距离
-    distances <- sqrt((data[, i] - data[, j])^2)
-    # 存储结果
-    distance_list[[paste0("Col", i, "_Col", j)]] <- distances
-  }
-}
-
-# 打印结果
-for (name in names(distance_list)) {
-  cat(name, ":\n")
-  print(distance_list[[name]])
-  cat("\n")
-}
